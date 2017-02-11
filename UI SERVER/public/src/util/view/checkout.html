@@ -1,0 +1,117 @@
+<div class="col-xs-12" ng-controller="checkoutController as chkc">
+    <div class="col-xs-12 col-md-6">
+        <div class="md-card">
+            <div class="padding" style="padding-top:15px;">
+                <div class="container">
+                    <form class="form-horizontal" action=" " method="post" id="contact_form">
+                        <fieldset>
+                            <legend>Enter Details!</legend>
+                            <div class="form-group">
+                                <div class="col-xs-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input name="first_name" placeholder="Full Name" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                        <input name="email" placeholder="E-Mail Address" class="form-control" type="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                        <input name="phone" placeholder="(845)555-1212" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                        <input name="address" placeholder="Address" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                        <input name="city" placeholder="city" class="form-control" type="text" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 selectContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                        <select name="state" class="form-control selectpicker" required>
+                                            <option value="UK">United Kingdom</option>
+                                            <option value="India">India</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12 inputGroupContainer">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                        <input name="zip" placeholder="Zip Code" class="form-control" type="number" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-6" ng-controller="cartController as cc">
+        <div class="row cart-products" ng-repeat="cartItem in cc.cartItems">
+            <div class="col-xs-12 md-card">
+                <div class="padding" style="padding:5px 0px 15px 0px;">
+                    <div class="row">
+                        <div class="col-xs-5" ng-click="cc.showDetails(cartItem)">
+                            <img style="height:80px;padding:10px 0 0 10px; align:center;" src="{{cartItem.ImageUrl}}" alt="">
+                        </div>
+                        <div class="col-xs-5 text-right" ng-click="cc.showDetails(cartItem)">
+                            <span class="quantity"><span ng-bind="cartItem.quantity"></span> <span class="times">X</span></span>
+                            <a href="#">{{ cartItem.Name }}</a>
+                            <p class="p-price">{{cartItem.currency}} {{cartItem.price || "0"}}</p>
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <a ng-click="cc.removeItem($index)" class="remove-product"><i class="fa fa-times-circle"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="text-center" ng-hide="cc.cartItems.length">
+                <h4 class="cart-text">No items in cart</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="btn btn-lg btn-block btn-primary disabled">
+                    <span>Total : </span>
+                    <span class="total-price" ng-bind="cc.getCost()"></span>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <button ng-disabled="!cc.cartItems.length" type="button" class="btn  btn-lg btn-block btn-warning" ng-click="pc.buyNow(pc.product)">
+                    <b>CHECK OUT</b>
+                </button>
+            </div>
+
+            <br/>
+        </div>
+
+    </div>
+</div>

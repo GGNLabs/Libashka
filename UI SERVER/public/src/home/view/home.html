@@ -1,0 +1,68 @@
+<div ng-controller="HomeController as hc">
+    <div class="full hidden-xs">
+        <uib-carousel active="active" interval="hc.myInterval" no-wrap="noWrapSlides">
+            <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
+                <div class="banner-content" ng-class="slide.image">
+                    <div style="margin-left:30px;text-align:center;position:absolute;bottom:0px;">
+                        <di>
+                            <h1> {{slide.text}} </h1>explore more
+                            <br/>
+                    </div>
+                </div>
+
+                <div class="carousel-caption pull-right">
+                    <p>{{slide.text}}</p>
+                </div>
+    </div>
+    </uib-slide>
+    </uib-carousel>
+    <br/>
+    <br/>
+    <div class="new-product-area-home-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h4><span>New products</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4" ng-repeat="product in hc.newProducts">
+                    <div id="{{product._id}}" class="single-product md-card">
+                        <div class="item-top">
+                            <a href="#products/{{product._id}}"><img ng-class="'img_'+ product._id" src="{{product.ImageUrl}}"></a>
+                            <div class="button-container">
+                                <ul>
+                                    <li>
+                                        <a ng-click="hc.addProductToCart(product)">
+                                            <i class="fa fa-shopping-cart fa-2x product-action-icons" aria-hidden="true" title="Add to cart"></i>
+                                        </a>
+                                    </li>
+                                    <li><a ng-click="hc.buyNow(product)"><i title="Share" class="fa fa-share fa-2x product-action-icons"></i></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <h5><a class="product-name" href="#">{{product.Name}}</a></h5>
+                            <div class="price-rating-container">
+                                <div class="price-box">
+                                    <span><strong>{{product.currency}} {{product.price}} </strong></span>
+                                    <span class="old-price" ng-if="product.oldPrice">{{product.currency}} {{product.oldPrice}}</span>
+                                    <span class="comment" ng-if="product.comment">{{product.comment}}</span>
+                                </div>
+                                <div class="rating-right">
+                                    <div class="star-content">
+                                        <div class="star" ng-repeat="rating in hc.getArray(product.rating) track by $index"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

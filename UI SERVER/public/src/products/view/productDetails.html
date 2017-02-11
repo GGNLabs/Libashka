@@ -1,0 +1,64 @@
+<div class="col-xs-12" ng-controller="ProductsController as pc" ng-init="pc.getProduct();">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="md-card" id="large-Image-Product">
+                <div class="item-top">
+                    <a><img ng-class="'img_'+ pc.product._id" src="{{pc.product.ImageUrl}}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="md-card" onload="pc.setDivHeight()" ng-style="{height:pc.imgHeight+'px'}">
+                <div>
+                    <div class="col-xs-12">
+                        <strong><h2 ng-bind="pc.product.Name"></h2></strong>
+                        <hr/>
+                    </div>
+                    <div class="col-xs-6">
+                        <h3><strong>{{pc.product.currency}} {{pc.product.price}} </strong></h3> (Selling price)
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="old-price" ng-if="pc.product.oldPrice">
+                            <strong>{{pc.product.currency}} {{pc.product.oldPrice}} </strong></h3>
+                        <span class="comment" ng-if="pc.product.comment">{{pc.product.comment}}</span>
+                        <br/>
+                    </div>
+                    <div class="col-xs-12">
+                        <h3> Expected Make Time  : {{ pc.product.timeToMake}} Days</h3>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <h4> Assosicated Tags  : {{ pc.product.Category}}</h4>
+                    </div>
+
+
+                    <div class="col-xs-12">
+                        <h4>Review &amp; Ratings :</h4>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="rating-right">
+                            <div class="star-content">
+                                <div class="star" ng-repeat="rating in pc.getArray(pc.product.rating) track by $index"></div>
+                            </div>
+                        </div>
+                        <hr/>
+                    </div>
+                    <div class="col-xs-12 col-md-4">
+                        <button type="button" class="btn btn-lg btn-block btn-primary" ng-click="pc.addProductToCart(pc.product)">
+                            <b>ADD TO CART</b>
+                        </button>
+                    </div>
+                    <div class="col-xs-12 col-md-4">&nbsp;</div>
+                    <div class="col-xs-12 col-md-4">
+                        <button type="button" class="btn btn-lg btn-block btn-warning" ng-click="pc.buyNow(pc.product)">
+                            <b>BUY NOW</b>
+                        </button>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="col-xs-12 text-right">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

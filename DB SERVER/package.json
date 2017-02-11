@@ -1,0 +1,29 @@
+{
+    "name": "databasemanagementservice",
+    "version": "0.0.1",
+    "description": "This module manages data storage for other modules.",
+    "main": "app.js",
+    "author": {
+        "name": "GGN",
+        "email": ""
+    },
+    "dependencies": {
+        "async": "~1.5.2",
+        "body-parser": "1.13.0",
+        "express": "4.12.4",
+
+
+        "mongoose": "4.4.4",
+
+
+        "supertest": "1.0.1"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-jshint": "~0.10.0",
+        "grunt-contrib-uglify": "~0.5.0",
+        "grunt-contrib-copy": "~0.8.2",
+        "grunt-jsonmin": "~0.2.4",
+        "grunt-zip": "~0.17.1"
+    }
+}

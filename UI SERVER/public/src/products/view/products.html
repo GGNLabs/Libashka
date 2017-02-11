@@ -1,0 +1,50 @@
+<div>
+    <div class="row">
+        <div class="col-lg-2">
+            <div ng-include="'src/products/view/productsFilter.html'"></div>
+        </div>
+
+        <div class="col-lg-10" ng-controller="ProductsController as pc">
+            <div class="row">
+                <div class="col-sm-6 col-lg-4" ng-repeat="product in  pc.productsInDisplay">
+                    <div class="single-product md-card">
+                        <div class="item-top">
+                            <a href="#products/{{product._id}}"><img ng-class="'img_'+ product._id" src="{{product.ImageUrl}}"></a>
+                            <div class="button-container">
+                                <ul>
+                                    <li>
+                                        <a ng-click="pc.addProductToCart(product)">
+                                            <i class="fa fa-shopping-cart fa-2x product-action-icons" aria-hidden="true" title="Add to cart"></i>
+                                        </a>
+                                    </li>
+                                    <li><a ng-click="pc.buyNow(product)"><i title="Share" class="fa fa-share fa-2x product-action-icons"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <h5><a class="product-name" href="#">{{product.Name}}</a></h5>
+                            <div class="price-rating-container">
+                                <div class="price-box">
+                                    <span><strong>{{product.currency}} {{product.price}} </strong></span>
+                                    <span class="old-price" ng-if="product.oldPrice">{{product.currency}} {{product.oldPrice}}</span>
+                                    <span class="comment" ng-if="product.comment">{{product.comment}}</span>
+                                </div>
+                                <div class="rating-right">
+                                    <div class="star-content">
+                                        <div class="star" ng-repeat="rating in hc.getArray(product.rating) track by $index"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div ng-if="pc.productNotAvailable">
+                <h4>Sorry, no products for this category available</h4>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -2,20 +2,23 @@
     'use strict'
 
     angular.module('productcategories')
-        .service('productcategoriesService', ['$q', '$http', ProductCategoriesService]);
+        .service('productcategoriesService', ['$q', 'httpService', ProductCategoriesService]);
 
-    function ProductCategoriesService($q, $http) {
+    function ProductCategoriesService($q, httpService) {
         return {
             getAllProductCategories: function () {
                 var deferred = $q.defer();
 
-                var request = $http({
+                var request = {
                     method: "get",
                     url: GLOBALCONFIG.ServiceManager.getUrls('getProductCategories')
-                });
+                };
 
-                request.success(function (response) {
-                    deferred.resolve(response);
+                httpService.makeRequest(request, function (data) {
+                    deferred.resolve(data);
+                }, function (err) {
+                    alert(err);
+                    deferred.reject(err);
                 });
 
                 return deferred;
@@ -25,13 +28,16 @@
 
                 var deferred = $q.defer();
 
-                var request = $http({
+                var request = {
                     method: "get",
                     url: GLOBALCONFIG.ServiceManager.getUrls('getProductCategories')
-                });
+                };
 
-                request.success(function (response) {
-                    deferred.resolve(response);
+                httpService.makeRequest(request, function (data) {
+                    deferred.resolve(data);
+                }, function (err) {
+                    alert(err);
+                    deferred.reject(err);
                 });
 
                 return deferred;

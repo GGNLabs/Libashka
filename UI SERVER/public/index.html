@@ -27,6 +27,7 @@
             display: none !important;
         }
     </style>
+    <base href="/" />
 </head>
 
 <!--<body ng-app="TL" layout="row" ng-controller="UserController as ul" ng-cloak>-->
@@ -36,7 +37,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-6">
-                    <img class="tl_logo" src="assets/img/logo.jpg" alt="Tipti's Logo" />
+                    <img class="tl_logo big" src="assets/img/logo_big.jpg" alt="Tipti's Logo" />
+                    <img class="tl_logo small" src="assets/img/logo.jpg" alt="Tipti's Logo" />
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-6">
                     <center>
@@ -55,7 +57,7 @@
                                 <div class="mini-cart-content">
                                     <div class="cart-products" ng-repeat="cartItem in cc.cartItems" ng-if="$index<2">
                                         <div class="cart-image" ng-click="cc.showDetails(cartItem)">
-                                            <a><img class="cartImage" src="{{cartItem.ImageUrl}}" alt=""></a>
+                                            <a><img class="cartImage" ng-src="{{cartItem.ImageUrl}}" alt=""></a>
                                         </div>
                                         <div class="cart-product-info">
                                             <span class="quantity"><span ng-bind="cartItem.quantity"></span> <span class="times">X</span></span>
@@ -68,7 +70,7 @@
                                         <h4 class="cart-text">No items in cart</h4>
                                     </div>
                                     <div class="text-center" ng-show="cc.cartItems.length>2">
-                                        <a class="cart-text" ng-bind="cc.getCartItemCount()-2 + ' more items, click here to view all.'"></a>
+                                        <a class="cart-text" ng-bind="cc.getCartItemCount()-2 + ' more items.'"></a>
                                     </div>
                                     <div class="cart-price">
                                         <span>Total</span>
@@ -234,7 +236,7 @@
                         <div class="modal-product">
                             <div class="product-images">
                                 <div class="main-image images">
-                                    <img alt="" src="img/product/quick-view.jpg">
+                                    DELETED IMAGE
                                 </div>
                             </div>
                             <div class="product-info">
@@ -288,8 +290,6 @@
     <script src="angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="angular-material/angular-material.js"></script>
 
-    <script type="text/javascript" src="//connect.facebook.net/en_US/sdk.js"></script>
-
     <script type="text/javascript" src="src/shared/services/index.js"></script>
     <script type="text/javascript" src="src/shared/services/localStorageService.js"></script>
     <script type="text/javascript" src="src/shared/services/httpService.js"></script>
@@ -323,33 +323,24 @@
 
     <script type="text/javascript" src="./src/app-angular.js"></script>
     <script type="text/javascript">
-        // Try to find alternate code
-        var checkIfLoginSuccessful = function () {
-            var $body = angular.element(document.body);
-            var $rootScope = $body.scope().$root;
-            $rootScope.$apply(function () {
-                $rootScope.$emit('FBUserLoggedIn');
-            });
-        }
-
-        var login = function () {
-                alert('Please login before chckout!');
-                $('html,body').animate({
-                    scrollTop: $('#footer').offset().top
-                }, 1000);
-            }
-            //Check if user is already logged into FB
-            //        setTimeout(function () { // checkIfLoginSuccessful(); // }, 1000);
-
-
         function init() {
+            $('.small.tl_logo').css('display', 'none');
             window.addEventListener('scroll', function (e) {
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
                     shrinkOn = 1;
                 if (distanceY > shrinkOn) {
                     $('header').addClass("smaller");
+
+                    setTimeout(function () {
+                        $('.big.tl_logo').css('display', 'none');
+                        $('.small.tl_logo').css('display', 'block');
+                    }, 100)
                 } else {
                     $('header').removeClass("smaller");
+                    setTimeout(function () {
+                        $('.small.tl_logo').css('display', 'none');
+                        $('.big.tl_logo').css('display', 'block');
+                    }, 100)
                 }
             });
         }

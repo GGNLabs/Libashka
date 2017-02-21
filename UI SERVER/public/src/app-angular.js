@@ -19,7 +19,7 @@
         });
 
 
-    angular.module('TL').config(function ($routeProvider) {
+    angular.module('TL').config(function ($routeProvider, $locationProvider) {
         $routeProvider.when("/", {
             templateUrl: "src/home/view/home.html"
         }).when("/products", {
@@ -38,6 +38,10 @@
             templateUrl: "src/util/view/checkout.html"
         }).otherwise({
             redirectTo: '/'
+        });
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: true
         });
     });
 })();

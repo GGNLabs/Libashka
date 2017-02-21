@@ -72,33 +72,8 @@ module.exports = {
             Category: "Women Clothes Indo-Western"
                     }],
         Categories: [{
-            "Key": "Men",
+            "Key": "Jewellery",
             "Categories": [{
-                "Key": "Clothes",
-                "Categories": [{
-                    "Key": "Ethenic"
-                }, {
-                    "Key": "Indo-Western"
-                }, {
-                    "Key": "Unstiched-Suits"
-                }, {
-                    "Key": "Kaftans"
-                }]
-            }]
-        }, {
-            "Key": "Women",
-            "Categories": [{
-                "Key": "Clothes",
-                "Categories": [{
-                    "Key": "Ethenic"
-                }, {
-                    "Key": "Indo-Western"
-                }, {
-                    "Key": "Unstiched-Suits"
-                }, {
-                    "Key": "Kaftans"
-                }]
-            }, {
                 "Key": "Jewellery",
                 "Categories": [{
                     "Key": "Bangels"
@@ -112,7 +87,13 @@ module.exports = {
                     "Key": "Bracelets"
                 }]
             }]
-        }],
+        }, {
+            "Key": "Hair & Makeup",
+            "Categories": [{
+                "Key": "Hair & Makeup",
+                "Categories": []
+            }]
+            }],
         'dataLimit': 100
     }
     //mongod --dbpath D:\mongo\ data

@@ -7,7 +7,7 @@ function httpService($rootScope, $q, $http, localStorage) {
         requestJSON.headers = requestJSON.headers || {};
         requestJSON.headers['Access-Token'] = localStorage.getData('accesstoken', true);
         $http(requestJSON).then(function (response) {
-            successCallback(response);
+            successCallback(response.data);
         }, function (err) {
             errorCallback(err);
         });

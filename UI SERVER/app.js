@@ -15,14 +15,17 @@ app.use(express.static(__dirname + '/node_modules'));
 
 app.set('config', config);
 app.set('requestifier', requestifier);
-app.set(config.routes.route.name, router);
 
+app.set(config.routes.route.name, router);
 app.use(bodyparser.urlencoded({
     extended: false
 }));
 app.use(bodyparser.json());
 app.use(cors);
 app.use(config.routes.route.path, router);
+app.use("/", function (req, res) {
+    res.sendFile(__dirname + "/public/index.html");
+});
 
 controllers.init(app);
 http.createServer(app).listen(config.port);

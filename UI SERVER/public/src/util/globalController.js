@@ -26,7 +26,7 @@
                 console.log("User Registered!");
 
             }, function (err) {
-                debugger;
+                console.log(err);
             });
         };
 

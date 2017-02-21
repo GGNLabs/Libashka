@@ -2,33 +2,34 @@
     'use strict'
 
     angular.module('products')
-        .service('productsService', ['$q', '$http', '$timeout', ProductsService]);
+        .service('productsService', ['$q', 'httpService', '$timeout', ProductsService]);
 
-    function ProductsService($q, $http, $timeout) {
+    function ProductsService($q, httpService, $timeout) {
         return {
             getAllProducts: function (productCategory) {
                 var deferred = $q.defer();
 
-                var request = $http({
+                var request = {
                     method: "get",
                     url: GLOBALCONFIG.ServiceManager.getUrls('getProductDetails')
-                });
-
-                request.success(function (data) {
+                };
+                httpService.makeRequest(request, function (data) {
                     deferred.resolve(data);
+                }, function (err) {
+                    alert(err);
                 });
-
                 return deferred;
-
             },
-            getProductsById(productId) {
+            getProductsById: function (productId) {
                 var deferred = $q.defer();
-                var request = $http({
+                var request = {
                     method: "get",
                     url: GLOBALCONFIG.ServiceManager.getUrls('getProductDetails') + '/' + productId
-                });
-                request.success(function (data) {
+                };
+                httpService.makeRequest(request, function (data) {
                     deferred.resolve(data);
+                }, function (err) {
+                    alert(err);
                 });
                 return deferred;
             },
@@ -39,28 +40,34 @@
                 var deferred = $q.defer();
 
                 //check for undefined
-                var request = $http({
+                var request = {
                     method: "get",
                     url: GLOBALCONFIG.ServiceManager.getUrls('getProductByCategory') + "/" + categoryID
-                });
+                };
 
-                request.success(function (data) {
+                httpService.makeRequest(request, function (data) {
                     deferred.resolve(data);
+                }, function (err) {
+                    alert(err);
+                    deferred.reject(err);
                 });
-
                 return deferred;
             },
             getAllNewProducts: function () {
                 var deferred = $q.defer();
-                var request = $http({
+                var request = {
                     method: "get",
                     url: GLOBALCONFIG.ServiceManager.getUrls('getProductDetails')
-                });
-                request.success(function (data) {
+                };
+                httpService.makeRequest(request, function (data) {
                     deferred.resolve(data.filter(function (product) {
                         return product.DisplayAsNew
-                    }));
+                    }));;
+                }, function (err) {
+                    alert(err);
+                    deferred.reject(err);
                 });
+
                 return deferred;
             }
         };

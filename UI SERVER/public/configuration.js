@@ -2,7 +2,7 @@ var GLOBALCONFIG = {
     ServiceManager: {
         protocol: "http://",
         host: "127.0.0.1",
-        port: ":50000",
+        port: ":50001",
         urls: {
             getProductDetails: '/api/products',
             getProductCategories: '/api/productCategories',

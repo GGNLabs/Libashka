@@ -9,7 +9,7 @@
                 <div class="col-sm-6 col-lg-4" ng-repeat="product in  pc.productsInDisplay">
                     <div class="single-product md-card">
                         <div class="item-top">
-                            <a href="#products/{{product._id}}"><img ng-class="'img_'+ product._id" src="{{product.ImageUrl}}"></a>
+                            <a href="products/{{product._id}}"><img ng-class="'img_'+ product._id" ng-src="{{product.ImageUrl}}"></a>
                             <div class="button-container">
                                 <ul>
                                     <li>

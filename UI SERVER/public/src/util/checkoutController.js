@@ -3,15 +3,27 @@
 
     angular
         .module('util')
-        .controller('checkoutController', ['$rootScope', '$routeParams', '$mdSidenav', '$mdBottomSheet', '$log', '$q', '$scope', 'localStorage', '$location', checkoutController]);
+        .controller('checkoutController', ['$rootScope', 'httpService', '$routeParams', '$mdSidenav', '$mdBottomSheet', '$mdDialog', '$q', '$scope', 'localStorage', '$location', checkoutController]);
 
-    function checkoutController($rootScope, $routeParams, $mdSidenav, $mdBottomSheet, $log, $q, $scope, localStorage, $location) {
+    function checkoutController($rootScope, httpService, $routeParams, $mdSidenav, $mdBottomSheet, $mdDialog, $q, $scope, localStorage, $location) {
         var chkc = this;
+        var cartKey = 'cartItems';
+        var cartItems = localStorage.getData(cartKey) || [];
 
         function validateEmail(email) {
             var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
+
+        var showAlert = function (cartID) {
+            chkc.orderId = cartID;
+            $mdDialog.show({
+                contentElement: '#myDialog',
+                parent: angular.element(document.body),
+                clickOutsideToClose: true
+            });
+        };
+
 
         var validateUser = function (user) {
             var isValid = true;
@@ -65,10 +77,30 @@
         }
         chkc.checkout = function (items, user) {
             if (validateUser(user)) {
-                alert(valid);
+                var request = {
+                    method: "POST",
+                    url: GLOBALCONFIG.ServiceManager.getUrls('checkout'), //"http://localhost:1338/api/carts",
+                    data: {
+                        cart: items,
+                        user: user
+                    }
+                };
+
+                httpService.makeRequest(request, function (data) {
+                    showAlert(data);
+                }, function (err) {
+                    alert(err);
+                });
+
             }
         }
 
+        chkc.finishPurchase = function () {
+            $location.path('/');
+            for (var i = cartItems.length; i >= 0; i--) {
+                $rootScope.$emit('itemRemovedFromCart', i);
+            }
+        };
         return chkc;
     }
 })();

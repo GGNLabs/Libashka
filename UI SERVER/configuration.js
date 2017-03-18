@@ -7,6 +7,16 @@ module.exports = {
             'name': 'router'
         }
     },
+    getCurrency: function (currency) {
+        switch (currency) {
+        case "£":
+            return "Euro"
+            break;
+        default:
+            return "Euro"
+
+        }
+    },
     DBManager: {
         protocol: "http://",
         host: "127.0.0.1",
@@ -16,6 +26,7 @@ module.exports = {
             productCategories: '/api/productCategories',
             productsByCategory: '/api/productsByCategory',
             cartDetails: '/api/carts',
+            aboutDetails: '/api/about',
             users: '/api/users'
         },
         getUrls: function (key, id) { //This function will return a well formed url with one path parameter at the end of url(if parameter exist).

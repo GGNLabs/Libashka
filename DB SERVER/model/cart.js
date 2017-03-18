@@ -13,12 +13,16 @@
              required: true,
              default: 'Added'
          },
-         currency: {
+         Currency: {
              type: String,
              required: true
          },
          TotalAmount: {
              type: Number,
+             required: true
+         },
+         User: {
+             type: Object,
              required: true
          },
          Products: {

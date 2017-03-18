@@ -11,7 +11,7 @@
 
     <link rel='stylesheet' href="bootstrap/dist/css/bootstrap.min.css" />
     <link rel='stylesheet' href="angular-ui-bootstrap/dist/ui-bootstrap-csp.css" />
-    <!--    <link rel="stylesheet" href="angular-material/angular-material.css" />-->
+    <link rel="stylesheet" href="angular-material/angular-material.css" />
     <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
     <link rel="stylesheet" href="assets/css/custom.css" />
@@ -37,13 +37,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-6">
-                    <img class="tl_logo big" src="assets/img/logo_big.jpg" alt="Tipti's Logo" />
-                    <img class="tl_logo small" src="assets/img/logo.jpg" alt="Tipti's Logo" />
+                    <img class="tl_logo" src="assets/img/logo.jpg" alt="Tipti's Logo" />
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-6">
-                    <center>
-                        <h1 class="header-title">Tripti's Libashka</h1>
-                    </center>
+                <div class="col-lg-4 col-md-4 col-xs-6 text-center">
+                    <img class="tl_logo_big" src="assets/img/logo_big.jpg" alt="Tipti's Title" />
                 </div>
             </div>
             <div class="row">
@@ -112,7 +109,7 @@
 
 
     <div class="container main-body">
-        <div ng-view autoscroll="true"></div>
+        <div class=" slide-animation" ng-view autoscroll="true"></div>
     </div>
 
     <div class="footer-widget-area">
@@ -313,6 +310,9 @@
     <script src="./src/productCategories/ProductCategoriesService.js"></script>
     <script src="./src/productCategories/ProductCategoriesController.js"></script>
 
+    <script src="./src/profile/About.js"></script>
+    <script src="./src/profile/AboutController.js"></script>
+
 
     <script src="./src/products/Products.js"></script>
     <script src="./src/products/ProductsController.js"></script>
@@ -324,23 +324,13 @@
     <script type="text/javascript" src="./src/app-angular.js"></script>
     <script type="text/javascript">
         function init() {
-            $('.small.tl_logo').css('display', 'none');
             window.addEventListener('scroll', function (e) {
                 var distanceY = window.pageYOffset || document.documentElement.scrollTop,
                     shrinkOn = 1;
                 if (distanceY > shrinkOn) {
                     $('header').addClass("smaller");
-
-                    setTimeout(function () {
-                        $('.big.tl_logo').css('display', 'none');
-                        $('.small.tl_logo').css('display', 'block');
-                    }, 100)
                 } else {
                     $('header').removeClass("smaller");
-                    setTimeout(function () {
-                        $('.small.tl_logo').css('display', 'none');
-                        $('.big.tl_logo').css('display', 'block');
-                    }, 100)
                 }
             });
         }
@@ -348,4 +338,4 @@
     </script>
 </body>
 
-</html>
+</html>z

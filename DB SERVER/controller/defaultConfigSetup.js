@@ -70,6 +70,20 @@
         }
     }
 
+    var createAboutUs = function () {
+        request = {
+            table: 'about',
+            model: {
+                ImageUrl: config.About.ImageUrl,
+                About: config.About.data,
+                IsActive: true
+            }
+        };
+        data.create(request, function (err, response) {
+            console.log(err || response);
+        });
+    };
+
     defaultSetup.insertDefaultCategories = function () {
         var request = getCategoryRequestObj();
         request.query = {};
@@ -80,9 +94,11 @@
                 categories.forEach(function (category) {
                     createCategory(category, iterator++);
                 });
+                createAboutUs();
             } else {
                 console.log(err || "Product Categories table already created!");
             }
         });
+
     }
 })(module.exports);

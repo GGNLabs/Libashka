@@ -6,6 +6,7 @@
             product = require('./product'),
             user = require('./user'),
             cart = require('./cart'),
+            about = require('./about'),
             productCategory = require('./productCategory');
 
 
@@ -35,6 +36,10 @@
         router.route('/carts/:cartId')
             .delete(cart.deleteCart)
             .put(cart.updateCart);
+
+        router.route('/about/:aboutId?')
+            .get(about.getDetails)
+            .put(about.updateDetails);
 
         router.route('/users')
             .post(user.addUser);

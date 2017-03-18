@@ -129,17 +129,14 @@ md-toolbar:not(.md-menu-toolbar) {
     -o-transition: all linear 0.5s;
     transition: all linear 0.5s;
     opacity: 0;
-    left: 100%;
 }
 
 .slide-animation.ng-enter.ng-enter-active,
 .slide-animation.ng-leave {
-    left: 0;
     opacity: 1;
 }
 
 .slide-animation.ng-leave.ng-leave-active {
-    left: -100%;
     opacity: 0;
 }
 
@@ -337,6 +334,10 @@ md-toolbar:not(.md-menu-toolbar) {
     background-image: url('../img/women.png');
 }
 
+md-backdrop {
+    z-index: 1002 !important;
+}
+
 .circle-icon-div {
     position: absolute;
     top: 5px;
@@ -345,7 +346,7 @@ md-toolbar:not(.md-menu-toolbar) {
 
 .main-body {
     min-height: CALC(100% - 30px);
-    padding-top: 170px;
+    padding-top: 180px;
 }
 
 
@@ -378,8 +379,23 @@ header.smaller .tl_logo {
     padding: 5px 0px;
 }
 
+header.smaller .tl_logo_big {
+    width: 150px;
+    padding: 5px 0px;
+}
+
 .tl_logo {
-    width: 170px;
+    width: 150px;
+    padding: 10px 0px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.tl_logo_big {
+    width: 250px;
     padding: 10px 0px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;

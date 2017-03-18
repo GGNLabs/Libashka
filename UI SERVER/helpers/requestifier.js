@@ -14,7 +14,7 @@
 
     requestifier.post = function (requestifyObj, successCallBack, errorCallBack) {
         try {
-            requestify.post(requestifyObj.url, requestifyObj.data, requestifyObj.options)
+            requestify.post(requestifyObj.url, requestifyObj.data)
                 .then(function (response) {
                     var result = response.getBody();
                     successCallBack(result);

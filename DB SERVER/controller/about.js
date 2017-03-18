@@ -1,7 +1,7 @@
-(function (cart) {
+(function (about) {
     var data = require('../data'),
         responseSender = require('../helpers/responseSender'),
-        tableName = 'cart';
+        tableName = 'about';
 
     var updateTable = function (request, res) {
         data.update(request, function (err, response) {
@@ -9,13 +9,22 @@
         });
     }
 
-    cart.getCartDetails = function (req, res) {
+    about.getDetails = function (req, res) {
         var request = {};
         request.table = tableName;
+        var userName = req.params.userName;
+        request.query = {
+            $and: [{
+                "UserName": userName
+                    }, {
+                IsActive: true
+                    }]
+
+        };
         if (req.query & req.query.status) {
-            request.query = {
+            request.query.$and.push({
                 'Status': req.query.status
-            };
+            });
         }
         data.read(request, function (err, response) {
             if (err) {
@@ -25,8 +34,7 @@
         });
     };
 
-    cart.addCartItem = function (req, res) {
-        debugger;
+    about.addItem = function (req, res) {
         var request = {
             table: tableName,
             model: req.body
@@ -37,7 +45,7 @@
         });
     };
 
-    cart.deleteCartItem = function (req, res) {
+    about.deleteItem = function (req, res) {
         var request = {};
         request.table = tableName;
         request.model = {
@@ -49,7 +57,7 @@
         updateTable(request, res);
     };
 
-    cart.updateCartItem = function (req, res) {
+    about.updateItem = function (req, res) {
         var request = {
             table: tableName,
             model: req.body,

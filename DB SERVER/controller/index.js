@@ -4,6 +4,7 @@
             user = require('./user'),
             product = require('./product'),
             cart = require('./cart'),
+            about = require('./about'),
             productCategory = require('./productCategory');
 
         defaultConfigSetup.insertDefaultCategories();
@@ -28,5 +29,8 @@
         app.post('/api/carts', cart.addCartItem);
         app.delete('/api/carts/:cartId', cart.deleteCartItem);
         app.put('/api/carts/:cartId', cart.updateCartItem);
+
+        app.get('/api/about', about.getDetails);
+        app.put('/api/about/:aboutId', about.updateItem);
     };
 })(module.exports);

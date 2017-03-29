@@ -10,12 +10,8 @@ var express = require('express'),
 var app = module.exports = express(),
     router = express.Router();
 
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/node_modules'));
-
 app.set('config', config);
 app.set('requestifier', requestifier);
-
 app.set(config.routes.route.name, router);
 app.use(bodyparser.urlencoded({
     extended: false
@@ -23,10 +19,14 @@ app.use(bodyparser.urlencoded({
 app.use(bodyparser.json());
 app.use(cors);
 app.use(config.routes.route.path, router);
-app.use("/", function (req, res) {
+controllers.init(app);
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/node_modules'));
+app.get("*", function (req, res) {
+    debugger;
     res.sendFile(__dirname + "/public/index.html");
 });
 
-controllers.init(app);
+
 http.createServer(app).listen(config.port);
-console.log('Triptis Server is listening at %s', config.port);
+console.log(`Triptis Server is listening at ${config.port}`);

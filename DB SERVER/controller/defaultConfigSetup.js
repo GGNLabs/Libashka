@@ -71,17 +71,16 @@
     }
 
     var createAboutUs = function () {
-        request = {
-            table: 'about',
-            model: {
-                ImageUrl: config.About.ImageUrl,
-                About: config.About.data,
-                IsActive: true
-            }
-        };
-        data.create(request, function (err, response) {
-            console.log(err || response);
+        config.About.forEach(x => {
+            request = {
+                table: 'about',
+                model: x
+            };
+            data.create(request, function (err, response) {
+                console.log(err || response);
+            });
         });
+
     };
 
     defaultSetup.insertDefaultCategories = function () {

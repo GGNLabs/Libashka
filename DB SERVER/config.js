@@ -13,10 +13,17 @@ module.exports = {
         ses: {
             from: "ggnair.engg@gmail.com"
         },
-        About: {
-            ImageUrl: "https://s3-eu-west-1.amazonaws.com/triptiscollection/about/ABOUT+ME+pic.JPG",
-            data: "Tripti Singh is a fashion stylist from India now based in Watford, London and founder of Tripti’s Libashka. Tripti works closely with clients, helping to curate the right team for the project. "
-        },
+        About: [{
+            size: 4,
+            type: 'image',
+            url: "https://s3-eu-west-1.amazonaws.com/triptiscollection/about/ABOUT+ME+pic.JPG",
+            height: 400
+        }, {
+            size: 8,
+            type: 'text',
+            text: "Tripti Singh is a fashion stylist from India now based in Watford, London and founder of Tripti’s Libashka. Tripti works closely with clients, helping to curate the right team for the project. ",
+            height: 400
+        }],
         NewProducts: [{
             ImageUrl: "assets/img/banner.jpg",
             Name: "Fasionable Bangles",

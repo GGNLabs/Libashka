@@ -1,45 +1,14 @@
 <div class="container" ng-controller="AboutController as ac" ng-init="ac.getAboutUs()">
     <div class="row">
-        <div class="col-xs-12 col-md-5">
-            <div class="md-card" style="width:100%">
-                <div class="padding" style="padding:15px;">
-                    <img src="{{ac.aboutUsDetails.ImageUrl}}" alt="Tripti's Profile Picture" width="100%" />
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-7">
-            <div class="md-card">
-                <div class="padding" style="padding:15px;">
-                    <p ng-bind="ac.aboutUsDetails.About"> </p>
+        <div ng-repeat="detail in ac.aboutUsDetails">
+            <div class="col-xs-12 col-md-{{detail.size}}">
+                <div class="md-card" style="width:100%;height:{{detail.height || 300}}px">
+                    <div class="padding" style="padding:15px;">
+                        <img ng-if="detail.type=='image'" src="{{detail.url}} " alt="Tripti 's Profile Picture" width="100%" />
+                        <p ng-if="detail.type=='text'" ng-bind="detail.text"> </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="gaprow"></div>
-    <!--
-    <div class="row">
-    <div class="col-xs-12 col-md-5">
-        <div class="md-card">
-            <div class="padding" style="padding:15px;">
-                <p><strong>Designer:</strong> Tripti
-                    <br>
-                    <strong>Launch:</strong> 2007
-                    <br>
-                    <strong>City:</strong> LONDON
-                    <br>
-                    <strong>Famous Designs:</strong> Indo-Western
-                    <br>
-                    <strong>Signature Style:</strong> Suits</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-md-7">
-        <div class="md-card">
-            <div class="padding" style="padding:15px;">
-                <img src="assets/img/about_1.jpg" alt="Tripti's Profile Picture" style="width:100%" />
-            </div>
-        </div>
-    </div>
-</div>
--->
 </div>

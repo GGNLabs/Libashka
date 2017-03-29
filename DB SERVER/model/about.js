@@ -1,15 +1,20 @@
  var mongoose = require('mongoose'),
      schema = mongoose.Schema,
      aboutSchema = new schema({
-         _id: {
-             type: Number,
-             default: 1000
-         },
-         ImageUrl: {
+         url: {
              type: String,
              required: false
          },
-         About: {
+         text: {
+             type: String,
+             required: false
+         },
+         type: {
+             type: String,
+             required: false,
+             default: "text"
+         },
+         size: {
              type: String,
              required: true
          },

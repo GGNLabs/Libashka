@@ -13,7 +13,7 @@
                 url: GLOBALCONFIG.ServiceManager.getUrls('getAboutDetails')
             };
             httpService.makeRequest(request, function (data) {
-                ac.aboutUsDetails = data[0];
+                ac.aboutUsDetails = data;
             }, function (err) {
                 alert(err);
             });

@@ -26,7 +26,6 @@
     };
 
     cart.addCartItem = function (req, res) {
-        debugger;
         var request = {
             table: tableName,
             model: req.body

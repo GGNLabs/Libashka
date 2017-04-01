@@ -6,7 +6,7 @@
         tableName = 'cart',
         template = '';
 
-    fs.readFile('template.txt', (err, data) => {
+    fs.readFile('template.txt', function (err, data) {
         if (err) console.log(err);
         template = data.toString();
         console.log('Template Read');

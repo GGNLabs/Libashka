@@ -71,7 +71,7 @@
     }
 
     var createAboutUs = function () {
-        config.About.forEach(x => {
+        config.About.forEach(function (x) {
             request = {
                 table: 'about',
                 model: x

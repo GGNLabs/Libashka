@@ -12,7 +12,7 @@ var GLOBALCONFIG = {
             checkout: '/api/carts'
         },
         getUrls: function (key, id) { //This function will return a well formed url with one path parameter at the end of url(if parameter exist).
-            return this.protocol + this.host + this.port + this.urls[key] + (id ? "/" + id : '');
+            return window.location.protocol + "//" + window.location.host + this.urls[key] + (id ? "/" + id : '');
         }
     }
 }

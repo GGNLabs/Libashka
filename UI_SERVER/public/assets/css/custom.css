@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 .floatleft {
@@ -104,7 +105,6 @@ ul {
 
 /*
 body {
-    font-family: 'S', sans-serif;
     line-height: 18px;
     font-size: 14px;
     color: #777777;
@@ -215,7 +215,7 @@ body {
     font-weight: 500;
     /*    line-height: 96px;*/
     margin: 0;
-    padding: 0 20px;
+    padding: 0 20px 0px 10px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
@@ -463,7 +463,7 @@ body {
 
 .header-right-menu {
     float: right;
-    /*    padding: 27px 0 0;*/
+    padding: 20px 0 0 0;
 }
 
 .header-right-menu i {
@@ -694,16 +694,17 @@ ul.header-r-cart li:hover .mini-cart-content {
 
 .mini-cart-content .cart-product-info {
     display: inline-block;
-    margin-top: 5px;
+    /*    margin-top: 5px;*/
     padding-bottom: 0;
-    width: 70%;
+    width: 180px;
     position: relative
 }
 
 .mini-cart-content .cart-image {
     float: left;
-    margin-right: 5%;
-    width: 25%;
+    /*
+    margin-right: 5%; width: 25%;
+*/
 }
 
 .cart-product-info {
@@ -2559,7 +2560,7 @@ input[type="checkbox"]:focus {
     cursor: pointer;
     font-size: 12px;
     height: 27px;
-/*    max-width: 197px;*/
+    /*    max-width: 197px;*/
     outline: 0 none;
     padding: 0 23px 0 5px;
     text-shadow: 0 1px 0 #ffffff;
@@ -3349,7 +3350,6 @@ p#product-condition span {
 
 .sidebar-widget-post .price-box span {
     color: #363636;
-    font-family: "Poppins", sans-serif;
     font-size: 16px;
     font-weight: 500;
 }
@@ -4347,7 +4347,6 @@ p.checkout-coupon input[type=submit] {
 .page-subheading {
     border-bottom: 1px solid #d6d4d4;
     color: #555454;
-    font-family: "Open Sans", sans-serif;
     font-size: 18px;
     font-weight: 600;
     line-height: normal;
@@ -5764,3 +5763,27 @@ h3.widget-title-modal {
     background: #cf5c7c;
     color: #fff
 }
+
+
+/*--------------------------------------------Mobile css --------------------------------------------*/
+
+@media screen and (max-width: 800px) {
+    .banner-content {
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-attachment: fixed;
+    }
+    .carousel-inner {
+        height: auto !important;
+    }
+    .text-center-xs {
+        text-align: center !important;
+    }
+    .mainmenu ul#nav > li > a {
+        padding: 0 20px 0px 0px;
+    }
+}
+
+
+/*--------------------------------------------*/

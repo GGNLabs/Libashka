@@ -5,7 +5,7 @@
         aws = require('aws-sdk'),
         path = require("path");
 
-    aws.config.loadFromPath(path.join(__dirname, '../', 'config.json'));
+    aws.config.loadFromPath(path.join(__dirname, '../', 'aws_config.json'));
     var ses = new aws.SES({
         apiVersion: '2010-12-01'
     });
@@ -17,11 +17,11 @@
                 ToAddresses: mailDetails.to || []
             },
             Message: {
-                Subject: Source {
+                Subject: {
                     Data: mailDetails.subject
                 },
                 Body: {
-                    Text: {
+                    Html: {
                         Data: mailDetails.body,
                     }
                 }
@@ -29,7 +29,7 @@
         }, function (err, data) {
             if (err) throw err
             console.log('Email sent:');
-            console.log(data) console;
+            console.log(data);
         });
     };
 })(module.exports);

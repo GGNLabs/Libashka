@@ -11,7 +11,7 @@ module.exports = {
                 //'password': 'Tr!9tisDBu$3r'
         },
         ses: {
-            from: "ggnair.engg@gmail.com"
+            from: "dav@libashka.com"
         },
         About: [{
             size: 4,
@@ -86,7 +86,7 @@ module.exports = {
             Category: "Women Clothes Indo-Western"
                     }],
         Categories: [{
-            "Key": "Jewellery",
+            "Key": "Shop",
             "Categories": [{
                 "Key": "Jewellery",
                 "Categories": [{
@@ -100,14 +100,11 @@ module.exports = {
                 }, {
                     "Key": "Bracelets"
                 }]
-            }]
-        }, {
-            "Key": "Hair & Makeup",
-            "Categories": [{
+            }, {
                 "Key": "Hair & Makeup",
                 "Categories": []
             }]
-            }],
+        }],
         'dataLimit': 100
     }
     //mongod --dbpath D:\mongo\ data

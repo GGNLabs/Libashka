@@ -17,10 +17,11 @@
     };
 
     cart.addCart = function (req, res) {
-        debugger;
         var user = req.body.user || {};
         var items = req.body.cart || [];
-        items.forEach(x => x.currency = config.getCurrency(x.currency));
+        items.forEach(function (x) {
+            x.currency = config.getCurrency(x.currency)
+        });
         var requestifyObj = {
             url: config.DBManager.getUrls('cartDetails'),
             data: {
@@ -29,7 +30,9 @@
                 Currency: items[0].currency,
                 Products: items,
                 User: user,
-                TotalAmount: items.reduce((a, b) => a + b.price, 0)
+                TotalAmount: items.reduce(function (a, b) {
+                    return a + b.price
+                }, 0)
             },
             options: {
                 'Content-Type': 'application/json'

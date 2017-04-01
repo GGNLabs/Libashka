@@ -18,10 +18,9 @@
             assignNewIndexesToSlides(indexes);
         };
 
-
         slides.push({
             image: "banner1",
-            text: "Beautiful necklaces",
+            text: "Triptis Libashka",
             id: 0
         });
 
@@ -41,6 +40,12 @@
             image: 'banner4',
             text: "Bridal Jewellery",
             id: 3
+        });
+
+        slides.push({
+            image: "banner5",
+            text: "Beautiful necklaces",
+            id: 4
         });
 
         var newProducts = productsService.getAllNewProducts();

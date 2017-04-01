@@ -29,4 +29,4 @@ app.get("*", function (req, res) {
 
 
 http.createServer(app).listen(config.port);
-console.log(`Triptis Server is listening at ${config.port}`);
+console.log("Triptis Server is listening at " + config.port);

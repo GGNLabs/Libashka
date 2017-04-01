@@ -1,12 +1,28 @@
 (function (cart) {
     var data = require('../data'),
         responseSender = require('../helpers/responseSender'),
-        tableName = 'cart';
+        emailSender = require('../helpers/emailSender'),
+        fs = require('fs'),
+        tableName = 'cart',
+        template = '';
+
+    fs.readFile('template.txt', (err, data) => {
+        if (err) console.log(err);
+        template = data.toString();
+        console.log('Template Read');
+    });
 
     var updateTable = function (request, res) {
         data.update(request, function (err, response) {
             responseSender.send(err, response, res);
         });
+    }
+    var getExpectedDate = function (productsArray) {
+        var totalTime = productsArray.reduce(function (a, b) {
+            return a + b.timeToMake
+        }, 0)
+
+        return totalTime + ' Days';
     }
 
     cart.getCartDetails = function (req, res) {
@@ -32,7 +48,24 @@
         };
 
         data.create(request, function (err, response) {
+            if (err) {
+                return responseSender.send(err, null, res);
+            }
             responseSender.send(err, response, res);
+
+            template = template.replace("{{SUBJECT}}", "Confirm Your Order!");
+            template = template.replace("{{COUNT}}", req.body.Products.length);
+            template = template.replace("{{EXPECTEDDATE}}", getExpectedDate(req.body.Products));
+            template = template.replace("{{CURRENCY}}", req.body.Products[0].currency);
+            template = template.replace("{{TOTALAMOUNT}}", " " + req.body.TotalAmount);
+            template = template.replace("{{URL}}", "http://libashka.com");
+            template = template.replace("{{ACTION}}", "Confirm Order");
+            var emailDetails = {
+                to: [req.body.User.email],
+                subject: "Tripti's Libashka : Order Confirmation for OrderId " + response,
+                body: template
+            };
+            emailSender.send(emailDetails);
         });
     };
 

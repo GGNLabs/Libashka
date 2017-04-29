@@ -15,7 +15,11 @@
              default: "text"
          },
          size: {
-             type: String,
+             type: Number,
+             required: true
+         },
+         height: {
+             type: Number,
              required: true
          },
          IsActive: {

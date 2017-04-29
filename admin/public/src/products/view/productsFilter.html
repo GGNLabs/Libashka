@@ -1,0 +1,17 @@
+<div ng-controller="ProductsFilterController as pfc">
+	<div ng-if="pfc.productCategories">
+		<h4>Select Category</h4>
+		<br/>
+		<div ng-repeat="category in pfc.productCategories">
+			<span><input type="checkbox" id="category.Key" ng-change="pfc.applyCategoryFilter()" ng-model="category.isSelected"><span>&nbsp;{{category.Key}}</span></span>
+		</div>
+	</div>
+	<hr/>
+	<div ng-if="pfc.priceRange.options.from">
+		<h4>Select Price (in £) </h4>
+		<br/>
+		<div>
+			<input ng-model="pfc.priceRange.value" type="text" id="mySlider1" slider options="pfc.priceRange.options" />
+		</div>
+	</div>
+</div>

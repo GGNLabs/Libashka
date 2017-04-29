@@ -1,0 +1,102 @@
+<div class="col-xs-12" ng-controller="ProductsController as pc">
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="md-card" id="large-Image-Product" style="width:100%">
+                <form name="testForm" layout="column">
+                    <md-content layout-padding>
+                        <div layout-gt-sm="row">
+                            <lf-ng-md-file-input class="col-xs-12" lf-files="files" accept="image/*" drag lf-required lf-filesize="5MB" lf-mimetype="image/*" drag preview></lf-ng-md-file-input>
+                        </div>
+                        <div layout-gt-sm="row">
+                            <div class="col-xs-12 col-md-4">&nbsp;</div>
+                            <div class="col-xs-12 col-md-4">&nbsp;</div>
+                            <div class="col-xs-12 col-md-4">
+                                <button type="button" class="btn btn-lg btn-block btn-warning" ng-click="pc.upload()">
+                                    <b>Upload</b>
+                                </button>
+                            </div>
+                        </div>
+                    </md-content>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="md-card" style="width:100%;">
+                <div>
+                    <md-content layout-padding>
+                        <div class="col-xs-12">
+                            <form name="userForm">
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Url</label>
+                                        <input type="text" disabled="true" ng-model="pc.product.ImageUrl">
+                                    </md-input-container>
+                                </div>
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Title</label>
+                                        <input ng-model="pc.product.Name">
+                                    </md-input-container>
+                                </div>
+                                <div layout-gt-sm="row">
+
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Price</label>
+                                        <input type="number" ng-model="pc.product.price">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Old Price</label>
+                                        <input type="number" ng-model="pc.product.oldPrice">
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Expected Make Time (in days)</label>
+                                        <input type="number" ng-model="pc.product.timeToMake">
+                                    </md-input-container>
+                                </div>
+                                <md-input-container class="md-block">
+                                    <label>Comment</label>
+                                    <input type="text" maxlength="200" ng-model="pc.product.comment">
+                                </md-input-container>
+                                <div layout-gt-sm="row">
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <md-checkbox ng-model="pc.product.DisaplayAsNew" aria-label="DisaplayAsNew">
+                                            Mark as new product
+                                        </md-checkbox>
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Category</label>
+                                        <md-select ng-model="pc.product.category">
+                                            <md-option><em>None</em></md-option>
+                                            <md-option ng-repeat="cat in pc.categories" ng-value="cat.value">{{cat.text}}</md-option>
+                                        </md-select>
+
+                                    </md-input-container>
+                                    <md-input-container class="md-block" flex-gt-sm>
+                                        <label>Currency</label>
+                                        <md-select ng-model="pc.product.currency">
+                                            <md-option><em>None</em></md-option>
+                                            <md-option ng-repeat="currency in pc.currencies" ng-value="currency.value">{{currency.text}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div layout-gt-sm="row">
+                                    <div class="col-xs-12 col-md-4">
+                                        <button type="button" class="btn btn-lg btn-block btn-primary" ng-click="pc.cancel()">
+                                            <b>Cancel</b>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">&nbsp;</div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <button type="button" class="btn btn-lg btn-block btn-warning" ng-click="pc.save()">
+                                            <b>Save</b>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </md-content>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

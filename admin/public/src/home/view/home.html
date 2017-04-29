@@ -1,0 +1,144 @@
+<div ng-controller="HomeController as hc">
+
+    <div class="new-product-area-home-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h4><span>New products</span></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-4" ng-repeat="product in hc.newProducts">
+                    <div id="{{product._id}}" class="single-product md-card">
+                        <div class="item-top">
+                            <a href="/products/{{product._id}}"><img ng-class="'img_'+ product._id" ng-src="{{product.ImageUrl}}"></a>
+                            <div class="button-container">
+                                <ul>
+                                    <li>
+                                        <a href="/products/{{product._id}}">
+                                            <i class="fa fa-edit fa-2x product-action-icons" aria-hidden="true" title="Edit"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="hc.deleteProduct(product._id)">
+                                            <i class="fa fa-remove fa-2x product-action-icons" aria-hidden="true" title="Delete"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <h5><a class="product-name" href="#">{{product.Name}}</a></h5>
+                            <div class="price-rating-container">
+                                <div class="price-box">
+                                    <span><strong>{{product.currency}} {{product.price}} </strong></span>
+                                    <span class="old-price" ng-if="product.oldPrice">{{product.currency}} {{product.oldPrice}}</span>
+                                    <span class="comment" ng-if="product.comment">{{product.comment}}</span>
+                                </div>
+                                <div class="rating-right">
+                                    <div class="star-content">
+                                        <div class="star" ng-repeat="rating in hc.getArray(product.rating) track by $index"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single-product md-card" style="width:100%">
+                        <div class="item-top">
+                            <a><img class="img_Product" ng-src="    "></a>
+                            <div class="button-container">
+                                <ul>
+                                    <li>
+                                        <a href="/products?newarrival=true">
+                                            <i class="fa fa-plus fa-4x product-action-icons" aria-hidden="false" title="Edit"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <br/>
+                            <div class="text-center">
+                                <strong>Add New Product</strong>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h4><span>All products</span></h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-lg-4" ng-repeat="product in hc.products">
+                    <div id="{{product._id}}" class="single-product md-card">
+                        <div class="item-top">
+                            <a href="/products/{{product._id}}"><img ng-class="'img_'+ product._id" ng-src="{{product.ImageUrl}}"></a>
+                            <div class="button-container">
+                                <ul>
+                                    <li>
+                                        <a ng-click="hc.addProductToCart(product)">
+                                            <i class="fa fa-edit fa-2x product-action-icons" aria-hidden="true" title="Edit"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a ng-click="hc.addProductToCart(product)">
+                                            <i class="fa fa-remove fa-2x product-action-icons" aria-hidden="true" title="Delete"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <h5><a class="product-name" href="#">{{product.Name}}</a></h5>
+                            <div class="price-rating-container">
+                                <div class="price-box">
+                                    <span><strong>{{product.currency}} {{product.price}} </strong></span>
+                                    <span class="old-price" ng-if="product.oldPrice">{{product.currency}} {{product.oldPrice}}</span>
+                                    <span class="comment" ng-if="product.comment">{{product.comment}}</span>
+                                </div>
+                                <div class="rating-right">
+                                    <div class="star-content">
+                                        <div class="star" ng-repeat="rating in hc.getArray(product.rating) track by $index"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="single-product md-card" style="width:100%">
+                        <div class="item-top">
+                            <a><img class="img_Product" ng-src="    "></a>
+                            <div class="button-container">
+                                <ul>
+                                    <li>
+                                        <a href="/products">
+                                            <i class="fa fa-plus fa-4x product-action-icons" aria-hidden="false" title="Edit"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="item-bottom">
+                            <br/>
+                            <div class="text-center">
+                                <strong>Add Product</strong>
+                            </div>
+                            <br/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

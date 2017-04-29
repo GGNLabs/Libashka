@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tripti's Libashka</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel='stylesheet' href="bootstrap/dist/css/bootstrap.min.css" />
+    <link rel='stylesheet' href="angular-ui-bootstrap/dist/ui-bootstrap-csp.css" />
+    <link rel="stylesheet" href="angular-material/angular-material.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="lf-ng-md-file-input/dist/lf-ng-md-file-input.css">
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+
+
+    <style type="text/css">
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <base href="/" />
+</head>
+
+<!--<body ng-app="TL" layout="row" ng-controller="UserController as ul" ng-cloak>-->
+
+<body ng-app="TL" ng-cloak ng-controller="globalController as gc">
+    <header class="smaller">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img class="tl_logo" src="assets/img/logo.jpg" alt="Tipti's Logo" />
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div class="header-right-menu">
+                        <ul class="header-r-cart" ng-controller="cartController as cc">
+                            <li><a class="cart"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true" style="padding-right:5px"></i><span ng-bind="cc.getCartItemCount()"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 text-center-xs">
+                    <div ng-include="'src/menu.html'"></div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+
+    <div class="container main-body">
+        <div class=" slide-animation" ng-view autoscroll="true"></div>
+    </div>
+
+
+    <script src="angular/angular.js"></script>
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.js"></script>
+    <script src="angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="angular-route/angular-route.js"></script>
+    <script src="angular-animate/angular-animate.js"></script>
+    <script src="angular-aria/angular-aria.js"></script>
+    <script type="text/javascript" src="angular-material/angular-material.js"></script>
+    <script src="lf-ng-md-file-input/dist/lf-ng-md-file-input.js"></script>
+    <script src="ng-file-upload/dist/ng-file-upload.min.js"></script>
+
+    <script type="text/javascript" src="src/shared/services/index.js"></script>
+    <script type="text/javascript" src="src/shared/services/localStorageService.js"></script>
+    <script type="text/javascript" src="src/shared/services/httpService.js"></script>
+    <script type="text/javascript" src="src/shared/index.js"></script>
+    <!--
+    <script src="./src/users/Users.js"></script>
+<script src="./src/users/UserController.js"></script>
+<script src="./src/users/UserService.js"></script>
+-->
+
+    <script type="application/javascript" src="configuration.js"></script>
+    <script type="application/javascript" src="./src/util/index.js"></script>
+    <script type="application/javascript" src="./src/util/globalController.js"></script>
+    <script type="application/javascript" src="./src/util/cartController.js"></script>
+    <script type="application/javascript" src="./src/util/checkoutController.js"></script>
+
+    <script src="./src/home/Home.js"></script>
+    <script src="./src/home/HomeController.js"></script>
+
+    <script src="./src/productCategories/ProductCategories.js"></script>
+    <script src="./src/productCategories/ProductCategoriesService.js"></script>
+    <script src="./src/productCategories/ProductCategoriesController.js"></script>
+
+    <script src="./src/profile/About.js"></script>
+    <script src="./src/profile/AboutController.js"></script>
+
+
+    <script src="./src/products/Products.js"></script>
+    <script src="./src/products/ProductsController.js"></script>
+    <script src="./src/products/ProductsService.js"></script>
+    <script src="./src/products/ProductsFilterController.js"></script>
+
+
+
+    <script type="text/javascript" src="./src/app-angular.js"></script>
+    <script type="text/javascript">
+        function init() {
+            window.addEventListener('scroll', function (e) {
+                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+                    shrinkOn = 1;
+                if (distanceY > shrinkOn) {
+                    $('header').addClass("smaller");
+                } else {
+                    $('header').removeClass("smaller");
+                }
+            });
+        }
+        // window.onload = init();
+    </script>
+</body>
+
+</html>

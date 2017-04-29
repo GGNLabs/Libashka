@@ -1,19 +1,19 @@
 (function () {
     angular
         .module('about')
-        .controller('AboutController', ['$rootScope', 'httpService', '$mdDialog', '$scope', AboutController]);
+        .controller('AboutController', ['$rootScope', 'httpService', '$mdDialog', '$scope', '$location', AboutController]);
 
 
-    function AboutController($rootScope, httpService, $mdDialog, $scope) {
+    function AboutController($rootScope, httpService, $mdDialog, $scope, $location) {
         var ac = this
         ac.aboutUsDetails = [];
         ac.dialog = {};
-        ac.showAlert = function (type, index) {
+        ac.showAlert = function (type, detail) {
             ac.dialog = {
                 type: type,
-                index: index
+                detail: detail
             }
-            ac.profiletext = ac.aboutUsDetails[ac.dialog.index].text;
+            ac.profiletext = detail.text;
             $mdDialog.show({
                 contentElement: '#' + type + '_Dialog',
                 parent: angular.element(document.body),
@@ -21,7 +21,9 @@
             });
         };
         ac.addNewTab = function () {
-            ac.aboutUsDetails.push({});
+            ac.aboutUsDetails.push({
+                IsActive: true
+            });
         };
         ac.removeTab = function (detail) {
             detail.IsActive = false;
@@ -41,6 +43,7 @@
             };
             httpService.makeRequest(request, function (data) {
                 alert(data);
+                $location.path("/");
             }, function (err) {
                 alert(err);
             });
@@ -57,11 +60,14 @@
             });
         }
         ac.saveText = function (text) {
-            ac.aboutUsDetails[ac.dialog.index].type = 'text';
-            ac.aboutUsDetails[ac.dialog.index].text = text;
+            ac.dialog.detail.type = 'text';
+            ac.dialog.detail.text = text;
+            $mdDialog.hide();
         }
 
         ac.upload = function () {
+            $rootScope.$emit("isLoading", true);
+            $mdDialog.hide();
             var formData = new FormData();
             angular.forEach($scope[ac.dialog.type + 'files'], function (obj) {
                 if (!obj.isRemote) {
@@ -79,12 +85,14 @@
                 }
             };
             httpService.makeRequest(request, function (data) {
-                ac.aboutUsDetails[ac.dialog.index].type = ac.dialog.type;
+                ac.dialog.detail.type = ac.dialog.type;
                 alert(data.msg);
-                ac.aboutUsDetails[ac.dialog.index].url = data.url;
+                ac.dialog.detail.url = data.url;
                 $scope[ac.dialog.type + 'files'] = [];
+                $rootScope.$emit("isLoading");
             }, function (err) {
                 console.log(err);
+                $rootScope.$emit("isLoading");
             });
         };
         return ac;

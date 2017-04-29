@@ -18,13 +18,13 @@ var GLOBALCONFIG = {
         }
     },
     currencies: [{
-        value: "Euro",
+        value: "£",
         text: "£"
         }, {
-        value: "Dollar",
+        value: "$",
         text: "$"
         }, {
-        value: "Rupee",
+        value: "₹",
         text: "₹"
         }],
     categories: [{

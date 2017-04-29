@@ -8,6 +8,10 @@
         var querySring = $location.search();
         pc.product = {};
         pc.upload = function () {
+            if ($scope.files.length <= 0) {
+                return alert("Please select a file");
+            }
+            $rootScope.$emit("isLoading", true);
             var formData = new FormData();
             angular.forEach($scope.files, function (obj) {
                 if (!obj.isRemote) {
@@ -16,15 +20,30 @@
             });
 
             productsService.uploadFile(formData, function (err, result) {
-                pc.product.ImageUrl = result.url;
+                if (result) {
+                    pc.product.ImageUrl = result.url;
+                } else {
+                    alert("Unable to upload file");
+                }
+                $scope.files = [];
+                $rootScope.$emit("isLoading");
             }, function (err) {
+                $rootScope.$emit("isLoading");
                 alert(err);
             });
         };
 
         pc.save = function () {
+            $rootScope.$emit("isLoading", true);
             productsService.addProduct(pc.product, function (err, result) {
-                alert(err ? "Unable to add Product! Please try again later" : result);
+                if (err) {
+                    alert("Unable to add Product! Please try again later");
+                } else {
+                    alert("Product Added Successfully : " + result);
+                    $location.path("/");
+                }
+                $rootScope.$emit("isLoading");
+
             });
         };
 

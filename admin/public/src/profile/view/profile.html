@@ -15,22 +15,22 @@
                     <div class="button-container">
                         <ul>
                             <li>
-                                <a ng-click="ac.showAlert('text',$index)">
+                                <a ng-click="ac.showAlert('text',detail)">
                                     <i class="fa fa-file-text-o fa-2x product-action-icons" aria-hidden="true" title="Text"></i>
                                 </a>
                             </li>
                             <li>
-                                <a ng-click="ac.showAlert('image',$index)">
+                                <a ng-click="ac.showAlert('image',detail)">
                                     <i class="fa fa-file-picture-o fa-2x product-action-icons" aria-hidden="true" title="Image"></i>
                                 </a>
                             </li>
                             <li>
-                                <a ng-click="ac.showAlert('video',$index)">
+                                <a ng-click="ac.showAlert('video',detail)">
                                     <i class="fa fa-file-movie-o fa-2x product-action-icons" aria-hidden="true" title="Video"></i>
                                 </a>
                             </li>
                             <li>
-                                <input placeholder="Width" style="height:40px;color:black;width:80px;" min="2" max="12" step="1" type="number" title="Width" ng-model="detail.size">
+                                <input placeholder="Width" style="height:40px;color:black;width:80px;" min="2" max="12" step="1" type="number" title="Width" ng-init="detail.size = detail.size || 12 " ng-model="detail.size">
 
                             </li>
                             <li>
@@ -52,22 +52,22 @@
         <div class="col-sm-6 col-lg-4">
             <div class="single-product md-card" style="width:100%">
                 <div class="item-top">
-                    <a><img class="img_Product" ng-src="    "></a>
+                    <a><img class="img_Product" ng-src=""></a>
                     <div class="button-container">
                         <ul>
                             <li>
-                                <a ng-click="hc.addProductToCart(product)">
-                                    <i class="fa fa-plus fa-4x product-action-icons" aria-hidden="false" title="Add New" ng-click="ac.addNewTab()"></i>
+                                <a ng-click="ac.addNewTab()">
+                                    <i class="fa fa-plus fa-4x product-action-icons" aria-hidden="false" title="Add New"></i>
                                 </a>
                             </li>
                             <li>
-                                <a ng-click="hc.addProductToCart(product)">
-                                    <i class="fa fa-save fa-4x product-action-icons" aria-hidden="false" title="Save Page" ng-click="ac.save()"></i>
+                                <a ng-click="ac.save()">
+                                    <i class="fa fa-save fa-4x product-action-icons" aria-hidden="false" title="Save Page"></i>
                                 </a>
                             </li>
                             <li>
-                                <a ng-click="hc.addProductToCart(product)">
-                                    <i class="fa fa-remove fa-4x product-action-icons" aria-hidden="false" title="Cancel" ng-click="ac.cancel()"></i>
+                                <a ng-click="ac.cancel()">
+                                    <i class="fa fa-remove fa-4x product-action-icons" aria-hidden="false" title="Cancel"></i>
                                 </a>
                             </li>
                         </ul>
@@ -88,7 +88,7 @@
                     <form name="testForm" layout="column">
                         <md-content layout-padding>
                             <div layout-gt-sm="row">
-                                <lf-ng-md-file-input class="col-xs-12" lf-files="imagefiles" accept="image/*" drag lf-required lf-filesize="5MB" lf-mimetype="image/*" drag preview></lf-ng-md-file-input>
+                                <lf-ng-md-file-input class="col-xs-12" lf-files="imagefiles" accept="image/*" drag lf-required lf-filesize="5MB" lf-mimetype="image/*"></lf-ng-md-file-input>
                             </div>
                             <div layout-gt-sm="row">
                                 <div class="col-xs-12 col-md-4">&nbsp;</div>
@@ -110,7 +110,7 @@
                     <form name="testForm" layout="column">
                         <md-content layout-padding>
                             <div layout-gt-sm="row">
-                                <lf-ng-md-file-input class="col-xs-12" lf-files="videofiles" accept="video/*" drag lf-required lf-filesize="5MB" lf-mimetype="image/*" drag preview></lf-ng-md-file-input>
+                                <lf-ng-md-file-input class="col-xs-12" lf-files="videofiles" accept="video/*" drag lf-required lf-filesize="5MB" lf-mimetype="image/*"></lf-ng-md-file-input>
                             </div>
                             <div layout-gt-sm="row">
                                 <div class="col-xs-12 col-md-4">&nbsp;</div>

@@ -367,6 +367,8 @@ header {
     width: 100%;
     z-index: 1000;
     background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-top: 4px solid #d1b993;
 }
 
 header.smaller .header-title {
@@ -375,8 +377,8 @@ header.smaller .header-title {
 }
 
 header.smaller .tl_logo {
-    width: 80px;
-    padding: 10px 0px;
+    width: 70px;
+    padding: 10px 0px 5px 0px;
 }
 
 header.smaller .tl_logo_big {
@@ -541,4 +543,15 @@ body {
 
 md-backdrop.md-select-backdrop {
     display: none !important;
+}
+
+.md-progressbar {
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+}
+
+.md-progressbar .md-bar {
+    background-color: #d1b993;
+    height: 3px;
 }

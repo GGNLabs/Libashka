@@ -34,6 +34,8 @@
 
 <body ng-app="TL" ng-cloak ng-controller="globalController as gc">
     <header class="smaller">
+        <md-progress-linear ng-if="gc.isLoading" md-mode="indeterminate" aria-valuemin="0" aria-valuemax="100" role="progressbar" class="md-progressbar" type="purple">
+        </md-progress-linear>
         <div class="container">
             <div class="row">
                 <div class="col-xs-6">
@@ -73,17 +75,11 @@
     <script src="angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="angular-material/angular-material.js"></script>
     <script src="lf-ng-md-file-input/dist/lf-ng-md-file-input.js"></script>
-    <script src="ng-file-upload/dist/ng-file-upload.min.js"></script>
 
     <script type="text/javascript" src="src/shared/services/index.js"></script>
     <script type="text/javascript" src="src/shared/services/localStorageService.js"></script>
     <script type="text/javascript" src="src/shared/services/httpService.js"></script>
     <script type="text/javascript" src="src/shared/index.js"></script>
-    <!--
-    <script src="./src/users/Users.js"></script>
-<script src="./src/users/UserController.js"></script>
-<script src="./src/users/UserService.js"></script>
--->
 
     <script type="application/javascript" src="configuration.js"></script>
     <script type="application/javascript" src="./src/util/index.js"></script>
@@ -101,29 +97,12 @@
     <script src="./src/profile/About.js"></script>
     <script src="./src/profile/AboutController.js"></script>
 
-
     <script src="./src/products/Products.js"></script>
     <script src="./src/products/ProductsController.js"></script>
     <script src="./src/products/ProductsService.js"></script>
     <script src="./src/products/ProductsFilterController.js"></script>
 
-
-
     <script type="text/javascript" src="./src/app-angular.js"></script>
-    <script type="text/javascript">
-        function init() {
-            window.addEventListener('scroll', function (e) {
-                var distanceY = window.pageYOffset || document.documentElement.scrollTop,
-                    shrinkOn = 1;
-                if (distanceY > shrinkOn) {
-                    $('header').addClass("smaller");
-                } else {
-                    $('header').removeClass("smaller");
-                }
-            });
-        }
-        // window.onload = init();
-    </script>
 </body>
 
 </html>

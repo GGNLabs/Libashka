@@ -33,6 +33,8 @@
                 request.query = {
                     "_id": profiledata._id
                 };
+                delete profiledata._id;
+                delete profiledata.__v;
                 updateTable(request);
             } else {
                 data.create(request, function (err, response) {

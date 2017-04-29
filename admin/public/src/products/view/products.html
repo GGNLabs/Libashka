@@ -29,20 +29,20 @@
                                 <div layout-gt-sm="row">
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Url</label>
-                                        <input type="text" disabled="true" ng-model="pc.product.ImageUrl">
+                                        <input type="text" disabled="true" ng-model="pc.product.ImageUrl" ng-required="true">
                                     </md-input-container>
                                 </div>
                                 <div layout-gt-sm="row">
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Title</label>
-                                        <input ng-model="pc.product.Name">
+                                        <input ng-model="pc.product.Name" ng-required="true">
                                     </md-input-container>
                                 </div>
                                 <div layout-gt-sm="row">
 
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Price</label>
-                                        <input type="number" ng-model="pc.product.price">
+                                        <input type="number" ng-model="pc.product.price" ng-required="true">
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Old Price</label>
@@ -50,12 +50,12 @@
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Expected Make Time (in days)</label>
-                                        <input type="number" ng-model="pc.product.timeToMake">
+                                        <input type="number" ng-model="pc.product.timeToMake" ng-required="true">
                                     </md-input-container>
                                 </div>
                                 <md-input-container class="md-block">
                                     <label>Comment</label>
-                                    <input type="text" maxlength="200" ng-model="pc.product.comment">
+                                    <input type="text" maxlength="200" ng-model="pc.product.comment" ng-required="true">
                                 </md-input-container>
                                 <div layout-gt-sm="row">
                                     <md-input-container class="md-block" flex-gt-sm>
@@ -65,7 +65,7 @@
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Category</label>
-                                        <md-select ng-model="pc.product.category">
+                                        <md-select ng-model="pc.product.category" ng-required="true">
                                             <md-option><em>None</em></md-option>
                                             <md-option ng-repeat="cat in pc.categories" ng-value="cat.value">{{cat.text}}</md-option>
                                         </md-select>
@@ -73,7 +73,7 @@
                                     </md-input-container>
                                     <md-input-container class="md-block" flex-gt-sm>
                                         <label>Currency</label>
-                                        <md-select ng-model="pc.product.currency">
+                                        <md-select ng-model="pc.product.currency" ng-required="true">
                                             <md-option><em>None</em></md-option>
                                             <md-option ng-repeat="currency in pc.currencies" ng-value="currency.value">{{currency.text}}</md-option>
                                         </md-select>
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="col-xs-12 col-md-4">&nbsp;</div>
                                     <div class="col-xs-12 col-md-4">
-                                        <button type="button" class="btn btn-lg btn-block btn-warning" ng-click="pc.save()">
+                                        <button type="button" class="btn btn-lg btn-block btn-warning" ng-click="pc.save()" ng-disabled="!userForm.$valid">
                                             <b>Save</b>
                                         </button>
                                     </div>

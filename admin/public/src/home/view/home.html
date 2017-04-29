@@ -13,14 +13,16 @@
                 <div class="col-sm-6 col-lg-4" ng-repeat="product in hc.newProducts">
                     <div id="{{product._id}}" class="single-product md-card">
                         <div class="item-top">
-                            <a href="/products/{{product._id}}"><img ng-class="'img_'+ product._id" ng-src="{{product.ImageUrl}}"></a>
+                            <a><img ng-class="'img_'+ product._id" ng-src="{{product.ImageUrl}}"></a>
                             <div class="button-container">
                                 <ul>
+                                    <!--
                                     <li>
-                                        <a href="/products/{{product._id}}">
-                                            <i class="fa fa-edit fa-2x product-action-icons" aria-hidden="true" title="Edit"></i>
-                                        </a>
-                                    </li>
+    <a href="/products/{{product._id}}">
+        <i class="fa fa-edit fa-2x product-action-icons" aria-hidden="true" title="Edit"></i>
+    </a>
+</li>
+-->
                                     <li>
                                         <a ng-click="hc.deleteProduct(product._id)">
                                             <i class="fa fa-remove fa-2x product-action-icons" aria-hidden="true" title="Delete"></i>

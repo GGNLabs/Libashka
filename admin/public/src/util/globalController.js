@@ -66,7 +66,18 @@
         $rootScope.$on('FBUserLoggedIn', function () {
             checkLoginStatus();
         });
+
+        $rootScope.$on('isLoading', function (event, data) {
+            if (data) {
+                self.isLoading = true;
+            } else {
+                self.isLoading = false;
+            }
+        });
+        //self.isLoading = true;
     }
+
+
 
     function facebookLoginService($q) {
         return {

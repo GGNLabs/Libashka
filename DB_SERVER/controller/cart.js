@@ -12,6 +12,15 @@
         console.log('Template Read');
     });
 
+    var guid = function () {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000)
+                .toString(16)
+                .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+            s4() + '-' + s4() + s4() + s4();
+    }
     var updateTable = function (request, res) {
         data.update(request, function (err, response) {
             responseSender.send(err, response, res);
@@ -46,7 +55,8 @@
             table: tableName,
             model: req.body
         };
-
+        var tempGuid = guid();
+        request.model.ConfirmationId = tempGuid;
         data.create(request, function (err, response) {
             if (err) {
                 return responseSender.send(err, null, res);
@@ -58,7 +68,7 @@
             template = template.replace("{{EXPECTEDDATE}}", getExpectedDate(req.body.Products));
             template = template.replace("{{CURRENCY}}", req.body.Products[0].currency);
             template = template.replace("{{TOTALAMOUNT}}", " " + req.body.TotalAmount);
-            template = template.replace("{{URL}}", "http://libashka.com");
+            template = template.replace("{{URL}}", "http://libashka.com/api/orders/" + response + "?confirm=" + tempGuid);
             template = template.replace("{{ACTION}}", "Confirm Order");
             var emailDetails = {
                 to: [req.body.User.email],

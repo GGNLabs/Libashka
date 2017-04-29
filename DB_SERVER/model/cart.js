@@ -13,6 +13,10 @@
              required: true,
              default: 'Added'
          },
+         ConfirmationId: {
+             type: String,
+             required: true
+         },
          Currency: {
              type: String,
              required: true

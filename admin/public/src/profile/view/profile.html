@@ -2,14 +2,14 @@
     <div class="row">
         <div ng-repeat="detail in ac.aboutUsDetails | filter:{IsActive:true}">
             <div class="col-xs-12 col-md-{{detail.size}}">
-                <div class="md-card single-product" style="background:black;color:white;width:100%;height:{{detail.height || 300}}px ;max-height:{{detail.height || 300}}px!important">
-                    <div class="padding" style="padding:15px;">
+                <div class="md-card single-product" style="background:black;color:white;width:100%;height:{{detail.height || 300}}px ;max-height:{{detail.height || 300}}px!important; overflow:hidden">
+                    <div>
                         <img ng-if="detail.type=='image'" src="{{detail.url}} " alt="Tripti 's Profile Picture" width="100%" />
                         <video ng-if="detail.type=='video'" width="detail.video.width || 320" height="detail.video.height || 240" controls>
                             <source src="detail.video.src" type="video/mp4">
                         </video>
                         <div>
-                            <p ng-if="detail.type=='text'" ng-bind="detail.text"> </p>
+                            <p ng-if="detail.type=='text'" ng-bind-html="detail.text"> </p>
                         </div>
                     </div>
                     <div class="button-container">
@@ -132,7 +132,8 @@
                     <form name="testForm" layout="column">
                         <md-content layout-padding>
                             <div layout-gt-sm="row">
-                                <textarea ng-model="ac.profiletext" cols="50" rows="5" class="form-control" md-autofocus></textarea>
+                                <!--                                <textarea cols="50" rows="5" class="form-control" md-autofocus></textarea>-->
+                                <div text-angular ng-model="ac.profiletext"></div>
                             </div>
                             <div layout-gt-sm="row">
                                 <div class="col-xs-12 col-md-4">&nbsp;</div>

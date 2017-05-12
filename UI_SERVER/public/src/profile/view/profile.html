@@ -2,10 +2,15 @@
     <div class="row">
         <div ng-repeat="detail in ac.aboutUsDetails">
             <div class="col-xs-12 col-md-{{detail.size}}">
-                <div class="md-card" style="width:100%;height:{{detail.height || 300}}px">
-                    <div class="padding" style="padding:15px;">
+                <div class="md-card" style="width:100%;height:{{detail.height || 300}}px;overflow:hidden">
+                    <div>
+                        <p ng-if="detail.type=='text'" ng-bind-html="ac.getSafeHtml(detail.text)"> </p>
+                        <div ng-if="detail.type=='video'">
+                            <video width="detail.video.width || 100%" height="detail.video.height || 240" controls>
+                                <source src="detail.video.src" type="video/mp4">
+                            </video>
+                        </div>
                         <img ng-if="detail.type=='image'" src="{{detail.url}} " alt="Tripti 's Profile Picture" width="100%" />
-                        <p ng-if="detail.type=='text'" ng-bind="detail.text"> </p>
                     </div>
                 </div>
             </div>

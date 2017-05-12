@@ -1,7 +1,7 @@
 (function () {
 
     angular
-        .module('TL', ['ngMaterial', 'ngRoute', 'ui.bootstrap', 'ngSlider', 'util', 'productcategories', 'products', 'home', 'shared', 'about'])
+        .module('TL', ['ngMaterial', 'ngRoute', 'ui.bootstrap', 'ngSlider', 'util', 'productcategories', 'products', 'home', 'shared', 'about','contactus'])
         .config(function ($mdThemingProvider, $mdIconProvider) {
 
             $mdIconProvider
@@ -20,7 +20,7 @@
 
 
     angular.module('TL').config(function ($routeProvider, $locationProvider) {
-        $routeProvider.when("/", {
+        $routeProvider.when("/home", {
             templateUrl: "src/home/view/home.html"
         }).when("/products", {
             templateUrl: "src/products/view/products.html"
@@ -37,7 +37,7 @@
         }).when("/checkout", {
             templateUrl: "src/util/view/checkout.html"
         }).otherwise({
-            redirectTo: '/'
+            redirectTo: '/profile'
         });
         $locationProvider.html5Mode({
             enabled: true,

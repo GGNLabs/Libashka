@@ -1,10 +1,10 @@
 (function () {
     angular
         .module('about')
-        .controller('AboutController', ['$rootScope', 'httpService', AboutController]);
+        .controller('AboutController', ['$rootScope', 'httpService', '$sce', AboutController]);
 
 
-    function AboutController($rootScope, httpService) {
+    function AboutController($rootScope, httpService, $sce) {
         var ac = this
         ac.aboutUsDetails = [];
         ac.getAboutUs = function () {
@@ -17,6 +17,9 @@
             }, function (err) {
                 alert(err);
             });
+        }
+        ac.getSafeHtml = function (text) {
+            return $sce.trustAsHtml(text)
         }
         return ac;
     }

@@ -20,6 +20,11 @@
                             <input ng-model="cc.contact.tel" type="number" ng-required="true" maxlength="11">
                         </md-input-container>
                     </div>
+
+                    <md-input-container class="md-block">
+                        <label>Query / Feedback</label>
+                        <input type="text" maxlength="500" ng-model="cc.contact.query" ng-required="true">
+                    </md-input-container>
                     <div layout-gt-sm="row">
                         <md-input-container class="md-block" flex-gt-sm>
                             <label>City</label>
@@ -34,10 +39,6 @@
                             <input type="number" ng-model="cc.contact.zip">
                         </md-input-container>
                     </div>
-                    <md-input-container class="md-block">
-                        <label>Query / Feedback</label>
-                        <input type="text" maxlength="500" ng-model="cc.contact.query" ng-required="true">
-                    </md-input-container>
                     <div layout-gt-sm="row">
                         <div class="col-xs-12 text-right">
                             <button type="submit" ng-disabled="!userForm.$valid" ng-click="cc.saveContact()" class="btn btn-large btn-warning">Send <span class="glyphicon glyphicon-send"></span></button>

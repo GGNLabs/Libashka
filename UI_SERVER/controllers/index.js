@@ -7,6 +7,7 @@
             user = require('./user'),
             cart = require('./cart'),
             about = require('./about'),
+            contact = require('./contact'),
             productCategory = require('./productCategory');
 
 
@@ -40,6 +41,10 @@
         router.route('/about/:aboutId?')
             .get(about.getDetails)
             .put(about.updateDetails);
+
+        router.route('/contact')
+            .get(contact.getDetails)
+            .post(contact.postDetails);
 
         router.route('/users')
             .post(user.addUser);

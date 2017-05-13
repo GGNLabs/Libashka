@@ -24,7 +24,8 @@ var model = {
         product: require('./product'),
         productCategory: require('./productCategory'),
         cart: require('./cart'),
-        about: require('./about')
+        about: require('./about'),
+        contact: require('./contact')
     }
 };
 exports.schemas = model;

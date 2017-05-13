@@ -9,6 +9,7 @@ var GLOBALCONFIG = {
             getProductByCategory: '/api/productsByCategory',
             registerUser: '/api/users',
             getAboutDetails: '/api/about',
+            getContactDetails: '/api/contact',
             checkout: '/api/carts'
         },
         getUrls: function (key, id) { //This function will return a well formed url with one path parameter at the end of url(if parameter exist).

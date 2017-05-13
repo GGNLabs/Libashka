@@ -27,6 +27,7 @@ module.exports = {
             productsByCategory: '/api/productsByCategory',
             cartDetails: '/api/carts',
             aboutDetails: '/api/about',
+            contactDetails: '/api/contact',
             users: '/api/users'
         },
         getUrls: function (key, id) { //This function will return a well formed url with one path parameter at the end of url(if parameter exist).

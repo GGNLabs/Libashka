@@ -23,10 +23,8 @@ controllers.init(app);
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
 app.get("*", function (req, res) {
-    debugger;
     res.sendFile(__dirname + "/public/index.html");
 });
-
 
 http.createServer(app).listen(config.port);
 console.log("Triptis Server is listening at " + config.port);

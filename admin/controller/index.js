@@ -4,6 +4,7 @@
             product = require('./product'),
             cart = require('./cart'),
             about = require('./about'),
+            contact = require('./contact'),
             productCategory = require('./productCategory');
 
         upload.init(app);
@@ -29,5 +30,9 @@
         app.get('/api/about', about.getDetails);
         app.post('/api/about', about.addItem);
         app.put('/api/about/:aboutId', about.updateItem);
+
+        app.get('/api/contact', contact.getDetails);
+        app.post('/api/contact', contact.addItem);
+
     };
 })(module.exports);

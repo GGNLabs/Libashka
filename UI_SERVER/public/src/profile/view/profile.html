@@ -2,7 +2,7 @@
     <div class="row">
         <div ng-repeat="detail in ac.aboutUsDetails">
             <div class="col-xs-12 col-md-{{detail.size}}">
-                <div class="md-card" style="width:100%;height:{{detail.height || 300}}px;overflow:hidden">
+                <div class="md-card" style="width:100%;max-height:{{detail.height || 300}}px;overflow:hidden">
                     <div>
                         <p ng-if="detail.type=='text'" ng-bind-html="ac.getSafeHtml(detail.text)"> </p>
                         <div ng-if="detail.type=='video'">

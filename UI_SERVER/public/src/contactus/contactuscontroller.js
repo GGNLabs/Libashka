@@ -19,10 +19,10 @@
                 }
             };
             httpService.makeRequest(request, function (data) {
-                alert(data);
+                alert("Details Submitted Successfuly! We will get back to you as soon as possible.");
             }, function (err) {
                 console.log(err);
-                alert(err);
+                alert("Unable to send mail. Please try again later.");
             });
         }
         return cc;

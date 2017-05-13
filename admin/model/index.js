@@ -24,6 +24,7 @@ var model = {
         product: require('./product'),
         productCategory: require('./productCategory'),
         cart: require('./cart'),
+        contact: require('./contact'),
         about: require('./about')
     }
 };

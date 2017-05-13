@@ -1,36 +1,41 @@
 <div ng-controller="HomeController as hc">
+    <!--
     <div class="full">
-        <div class="row">
-            <div class="col-xs-12">
-                <uib-carousel active="active" interval="hc.myInterval" no-wrap="noWrapSlides">
-                    <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
-                        <div class="banner-content" ng-class="slide.image">
-                            <div style="margin-left:30px;text-align:center;position:absolute;bottom:0px;">
-                                <div>
-                                    <h1 class="hidden-xs"> {{slide.text}} </h1>
-                                    <br/>
-                                </div>
-                            </div>
-                            <div class="carousel-caption pull-right">
-                                <p>{{slide.text}}</p>
+    <div class="row">
+        <div class="col-xs-12">
+            <uib-carousel active="active" interval="hc.myInterval" no-wrap="noWrapSlides">
+                <uib-slide ng-repeat="slide in hc.slides track by slide.id" index="slide.id">
+                    <div class="banner-content" ng-class="slide.image">
+                        <div style="margin-left:30px;text-align:center;position:absolute;bottom:0px;">
+                            <div>
+                                <h1 class="hidden-xs"> {{slide.text}} </h1>
+                                <br/>
                             </div>
                         </div>
-                    </uib-slide>
-                </uib-carousel>
-            </div>
+                        <div class="carousel-caption pull-right">
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </div>
+                </uib-slide>
+            </uib-carousel>
         </div>
     </div>
+</div>
+<br/>
+
     <br/>
-    <br/>
+-->
     <div class="new-product-area-home-two">
         <div class="container">
+            <!--
             <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h4><span>New products</span></h4>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-12">
+        <div class="section-title">
+            <h4><span>New products</span></h4>
+        </div>
+    </div>
+</div>
+-->
             <div class="row">
                 <div class="col-sm-6 col-lg-4" ng-repeat="product in hc.newProducts">
                     <div id="{{product._id}}" class="single-product md-card">

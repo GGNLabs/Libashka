@@ -1,10 +1,14 @@
 <div class="container" ng-controller="AboutController as ac" ng-init="ac.getAboutUs()">
     <div class="row">
-        <div ng-repeat="detail in ac.aboutUsDetails">
+        <div ng-repeat="detail in ac.aboutUsDetails | orderBy:'index'">
             <div class="col-xs-12 col-md-{{detail.size}}">
-                <div class="md-card" style="width:100%;max-height:{{detail.height || 300}}px;overflow:hidden">
+                <div class="md-card" ng-if="detail.type=='text'" style="width:100%;overflow:hidden;height:{{detail.height || 300}}px">
                     <div>
-                        <p ng-if="detail.type=='text'" ng-bind-html="ac.getSafeHtml(detail.text)"> </p>
+                        <p ng-bind-html="ac.getSafeHtml(detail.text)"> </p>
+                    </div>
+                </div>
+                <div class="md-card" ng-if="detail.type!='text'" style="width:100%;overflow:hidden;max-height:{{detail.height || 300}}px">
+                    <div>
                         <div ng-if="detail.type=='video'">
                             <video width="detail.video.width || 100%" height="detail.video.height || 240" controls>
                                 <source src="detail.video.src" type="video/mp4">

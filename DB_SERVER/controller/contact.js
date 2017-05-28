@@ -1,6 +1,8 @@
 (function (about) {
     var data = require('../data'),
         responseSender = require('../helpers/responseSender'),
+        fs = require('fs'),
+        config = require('../config'),
         emailSender = require('../helpers/emailSender'),
         tableName = 'contact';
 
@@ -19,7 +21,7 @@
     about.sendMail = function (req, res) {
         template = template.replace("{{BODY}}", req.body.body);
         var emailDetails = {
-            to: [req.body.to],
+            to: [config.ses.from],
             subject: req.body.subject,
             body: template
         };

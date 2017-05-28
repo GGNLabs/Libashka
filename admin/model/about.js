@@ -22,6 +22,11 @@
              type: Number,
              required: true
          },
+         index: {
+             type: Number,
+             required: true,
+             default: 0
+         },
          IsActive: {
              type: Boolean,
              required: true,

@@ -25,9 +25,13 @@
              type: String,
              required: false,
          },
+         isRead: {
+             type: Boolean,
+             required: false,
+         },
          zip: {
              type: String,
-             required: false,
+             default: false,
          },
          IsActive: {
              type: Boolean,

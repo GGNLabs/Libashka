@@ -1,6 +1,6 @@
 <div class="container" ng-controller="AboutController as ac" ng-init="ac.getAboutUs()">
     <div class="row">
-        <div ng-repeat="detail in ac.aboutUsDetails | filter:{IsActive:true}">
+        <div ng-repeat="detail in ac.aboutUsDetails | filter:{IsActive:true} | orderBy:'index'">
             <div class="col-xs-12 col-md-{{detail.size}}">
                 <div class="md-card single-product" style="background:black;color:white;width:100%;height:{{detail.height || 300}}px ;max-height:{{detail.height || 300}}px!important; overflow:hidden">
                     <div>
@@ -37,6 +37,11 @@
                                 <a ng-click="ac.removeTab(detail)">
                                     <i style="color:red" class="fa fa-remove fa-2x product-action-icons" aria-hidden="true" title="Delete"></i>
                                 </a>
+                            </li>
+                            <br/>
+                            <li style="padding-top:10px">
+                                Position :
+                                <input placeholder="Index" min="1" max="{{ac.aboutUsDetails.length}}" style="color:black;width:160px;" type="number" title="Index" ng-model="detail.index" style="color:black" />
                             </li>
                             <br/>
                             <li style="padding-top:10px">

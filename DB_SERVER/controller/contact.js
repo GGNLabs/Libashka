@@ -21,11 +21,13 @@
     about.sendMail = function (req, res) {
         template = template.replace("{{BODY}}", req.body.body);
         var emailDetails = {
-            to: [config.ses.from],
+            to: [req.body.to],
             subject: req.body.subject,
             body: template
         };
-        emailSender.send(emailDetails);
+        emailSender.send(emailDetails, function (err, data) {
+            responseSender.send(err, data, res);
+        });
     }
     about.getDetails = function (req, res) {
         var request = {};
@@ -57,7 +59,15 @@
             table: tableName,
             model: req.body
         };
-
+        template = template.replace("{{BODY}}", req.body.query);
+        var emailDetails = {
+            to: [config.ses.from],
+            subject: "New contact : " + req.body.name + " has contacted you! Email Id:" + req.body.email,
+            body: template
+        };
+        emailSender.send(emailDetails, function (err, data) {
+            console.log(err || data);
+        });
         data.create(request, function (err, response) {
             responseSender.send(err, response, res);
         });

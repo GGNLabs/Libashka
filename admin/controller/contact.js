@@ -15,7 +15,10 @@
         var userName = req.params.userName;
         request.query = {
             $and: [{
-                "UserName": userName
+                "CreatedDate": {
+                    $lt: new Date(),
+                    $gte: new Date(new Date().setDate(new Date().getDate() - 30))
+                }
                     }, {
                 IsActive: true
                     }]
@@ -58,11 +61,12 @@
     };
 
     about.updateItem = function (req, res) {
+        debugger;
         var request = {
             table: tableName,
             model: req.body,
             query: {
-                "_id": req.params.cartId
+                "_id": req.params.id
             }
         };
         updateTable(request, res);

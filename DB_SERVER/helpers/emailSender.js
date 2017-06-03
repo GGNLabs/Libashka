@@ -10,7 +10,7 @@
         apiVersion: '2010-12-01'
     });
 
-    emailSender.send = function (mailDetails) {
+    emailSender.send = function (mailDetails, callback) {
         ses.sendEmail({
             Source: config.ses.from,
             Destination: {
@@ -27,7 +27,8 @@
                 }
             }
         }, function (err, data) {
-            if (err) throw err
+            callback ? callback(err, data) : '';
+            if (err) console.log(err);
             console.log('Email sent:');
             console.log(data);
         });

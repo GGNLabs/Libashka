@@ -24,24 +24,43 @@
                 alert(err);
             });
         }
-
+        cc.toLocalDate = function (CreatedDate) {
+            return new Date(CreatedDate).toLocaleDateString();
+        }
         cc.reply = function (item) {
+
             cc.mail = {
                 to: item.email,
                 subject: "Re: Tripti's Libashka Contact Reply",
                 body: item.query
             };
+            var request = {
+                method: "put",
+                url: GLOBALCONFIG.ServiceManager.getUrls('getContactDetails', item._id),
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                data: {
+                    IsRead: true
+                }
+            };
+            httpService.makeRequest(request, function (data) {
+                cc.initialize();
+            }, function (err) {
+                console.log(err);
+                alert("Unable to mark email as read");
+            });
 
         }
 
         cc.send = function () {
             var request = {
                 method: "post",
-                url: "http://localhost:1337/api/mail",
+                url: "http://localhost:1338/api/mail",
                 headers: {
                     'Content-Type': "application/json"
                 },
-                body: cc.mail
+                data: cc.mail
             };
             httpService.makeRequest(request, function (data) {
                 alert("Mail sent successfully!");

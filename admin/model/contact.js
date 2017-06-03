@@ -34,6 +34,11 @@
              required: true,
              default: true
          },
+         IsRead: {
+             type: Boolean,
+             required: true,
+             default: false
+         },
          CreatedDate: {
              type: Date,
              default: Date.now

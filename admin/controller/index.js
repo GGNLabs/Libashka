@@ -33,6 +33,7 @@
 
         app.get('/api/contact', contact.getDetails);
         app.post('/api/contact', contact.addItem);
+        app.put('/api/contact/:id', contact.updateItem);
 
     };
 })(module.exports);

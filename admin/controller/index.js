@@ -34,7 +34,7 @@
         app.get('/api/contact', contact.getDetails);
         app.post('/api/contact', contact.addItem);
         app.put('/api/contact/:id', contact.updateItem);
-        app.put('/api/mail', contact.sendMail);
+        app.post('/api/mail', contact.sendMail);
 
     };
 })(module.exports);

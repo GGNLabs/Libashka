@@ -1,5 +1,6 @@
 (function (about) {
     var data = require('../data'),
+        requestifier = require('../helpers/requestifier'),
         responseSender = require('../helpers/responseSender'),
         tableName = 'contact';
 
@@ -61,7 +62,6 @@
     };
 
     about.updateItem = function (req, res) {
-        debugger;
         var request = {
             table: tableName,
             model: req.body,
@@ -70,6 +70,22 @@
             }
         };
         updateTable(request, res);
+    }
+
+    about.sendMail = function (req, res) {
+        var requestifyObj = {
+            url: "http://localhost:1338/api/mail",
+            data: req.body,
+            options: {
+                'Content-Type': 'application/json'
+            }
+        };
+        requestifier.post(requestifyObj, function (productResponse) {
+            responseSender.send(null, productResponse, res);
+        }, function (err) {
+            responseSender.send(err, null, res);
+        });
+
     }
 
 })(module.exports);

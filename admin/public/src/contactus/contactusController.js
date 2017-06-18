@@ -56,7 +56,7 @@
         cc.send = function () {
             var request = {
                 method: "post",
-                url: "http://localhost:1338/api/mail",
+                url: GLOBALCONFIG.ServiceManager.getUrls('sendMail'),
                 headers: {
                     'Content-Type': "application/json"
                 },

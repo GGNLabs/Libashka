@@ -6,11 +6,7 @@
         emailSender = require('../helpers/emailSender'),
         tableName = 'contact';
 
-    fs.readFile('mail.txt', function (err, data) {
-        if (err) console.log(err);
-        template = data.toString();
-        console.log('Template Read');
-    });
+
 
     var updateTable = function (request, res) {
         data.update(request, function (err, response) {
@@ -19,16 +15,21 @@
     }
 
     about.sendMail = function (req, res) {
-        template = template.replace("{{BODY}}", req.body.body);
-        var emailDetails = {
-            to: [req.body.to],
-            subject: req.body.subject,
-            body: template
-        };
-        emailSender.send(emailDetails, function (err, data) {
-            responseSender.send(err, data, res);
+        fs.readFile('mail.txt', function (err, data) {
+            if (err) console.log(err);
+            template = data.toString();
+            template = template.replace("{{BODY}}", req.body.body);
+            var emailDetails = {
+                to: [req.body.to],
+                subject: req.body.subject,
+                body: template
+            };
+            emailSender.send(emailDetails, function (err, data) {
+                responseSender.send(err, data, res);
+            });
         });
     }
+
     about.getDetails = function (req, res) {
         var request = {};
         request.table = tableName;

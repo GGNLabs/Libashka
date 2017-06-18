@@ -13,7 +13,7 @@ var GLOBALCONFIG = {
             checkout: '/api/carts',
             uploadFile: '/uploads',
             uploadProfile: '/upload/profile',
-            sendMail: 'api/mail'
+            sendMail: '/api/mail'
         },
         getUrls: function (key, id) { //This function will return a well formed url with one path parameter at the end of url(if parameter exist).
             return window.location.protocol + "//" + window.location.host + this.urls[key] + (id ? "/" + id : '');
